@@ -35,13 +35,13 @@ module OmniAuth
 
       def auth_hash
         OmniAuth::Utils.deep_merge(super, client_params.merge({
-          :grant_type => 'authorization_code'}))
+            grant_type: 'authorization_code'}))
       end
 
       def raw_info
         access_token.options[:mode] = :query
         access_token.options[:param_name] = :oauth_token
-        @raw_info ||= access_token.get('https://api.foursquare.com/v2/users/self?v=20140128').parsed['response']['user']
+        @raw_info ||= access_token.get('https://api.foursquare.com/v2/users/self?v=20170505').parsed['response']['user']
       end
 
       private
