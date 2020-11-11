@@ -44,6 +44,10 @@ module OmniAuth
         @raw_info ||= access_token.get('https://api.foursquare.com/v2/users/self?v=20170505').parsed['response']['user']
       end
 
+      def callback_url
+        options[:callback_url] || (full_host + script_name + callback_path + query_string)
+      end
+
       private
 
       def client_params
